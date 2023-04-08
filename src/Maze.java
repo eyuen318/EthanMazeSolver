@@ -139,6 +139,8 @@ public class Maze {
         return this.mazeGrid[row][col];
     }
 
+    public int getColumns(){ return mazeGrid[0].length; }
+    public int getRows(){ return mazeGrid.length; }
     /**
      * Determines if the cell is valid to visit.
      * @param row the int row val
@@ -147,6 +149,22 @@ public class Maze {
      */
     public boolean isValidCell(int row, int col) {
         // TODO: Complete this function
+        // if out of bounds
+        if (getCell(row, col) == null)
+        {
+            return false;
+        }
+        // if already explored
+        if (getCell(row, col).isExplored() == true)
+        {
+            return false;
+        }
+        //if not a wall
+        if (getCell(row, col).isWall() == true)
+        {
+            return false;
+        }
+
         return true;
     }
 }
